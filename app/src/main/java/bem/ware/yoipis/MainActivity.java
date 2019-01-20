@@ -1,5 +1,6 @@
 package bem.ware.yoipis;
 
+import android.content.ClipData;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.content.ClipboardManager;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -119,6 +122,17 @@ public class MainActivity extends AppCompatActivity {
         public String getIP() {
             return ipis;
         }*/
+    }
+
+    public void copy(View v){
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("label", outs.getText().toString());
+        clipboard.setPrimaryClip(clip);
+
+        Toast toast = Toast.makeText(getApplicationContext(),
+                "Copied!",
+                Toast.LENGTH_SHORT);
+        toast.show();
     }
 
 }
