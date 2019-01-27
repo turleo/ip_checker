@@ -7,7 +7,8 @@
 package bem.ware.yoipis;
 
 import android.content.ClipData;
-import android.content.Context;
+import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,24 +16,21 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.content.ClipboardManager;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.URL;
 import java.net.URLConnection;
-import java.lang.Void;
-import java.io.*;
-import java.net.*;
-import java.util.*;
-
-import bem.ware.yoipis.R;
+import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
         TextView outs;
@@ -76,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
                 getip.execute();
                 /**if you don't understand it will will ask ip on line
-                72 via AsyncTask */
+                126 via AsyncTask */
+                getLocalIP();
             }
         });
         locOut.setOnClickListener(new View.OnClickListener(){
@@ -92,6 +91,29 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // получим идентификатор выбранного пункта меню
+        int id = item.getItemId();
+
+        TextView infoTextView = (TextView) findViewById(R.id.textView);
+
+        // Операции для выбранного пункта меню
+        switch (id) {
+            case R.id.action_settings:
+                Intent about_ = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(about_);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     /**
