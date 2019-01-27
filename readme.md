@@ -6,5 +6,5 @@ My IP checker checking your IP in [ipyfy web service](https://www.ipify.org/).
 Screenshots
 ------------------------
 
-![screenshot](images/scr.png)
+![screenshot](images/scr2.png)
 ![screenshot2](images/scr1.png)
