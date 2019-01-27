@@ -1,6 +1,13 @@
+/**
+ * Simple ip checker by BM835
+ *
+ * https://github.com/BM835
+ * https://bm835.github.io/ip_checker
+ */
 package bem.ware.yoipis;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,12 +28,19 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.lang.Void;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+import bem.ware.yoipis.R;
 
 public class MainActivity extends AppCompatActivity {
         TextView outs;
+        TextView locOut;
         View view;
         Snackbar waitforip;
         getIP getip;
+        String locIP;
 
 
     @Override
@@ -37,11 +51,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         outs = findViewById(R.id.textView);
+        locOut = findViewById(R.id.textView2);
         view = findViewById(R.id.fab);
         getip = new getIP();
 
         /**ip will gets in start */
         getip.execute();
+        getLocalIP();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +77,19 @@ public class MainActivity extends AppCompatActivity {
                 getip.execute();
                 /**if you don't understand it will will ask ip on line
                 72 via AsyncTask */
+            }
+        });
+        locOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label", locIP);
+                clipboard.setPrimaryClip(clip);
+
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Copied!",
+                        Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
     }
@@ -125,14 +154,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void copy(View v){
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("label", outs.getText().toString());
-        clipboard.setPrimaryClip(clip);
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label", outs.getText().toString());
+            clipboard.setPrimaryClip(clip);
 
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "Copied!",
-                Toast.LENGTH_SHORT);
-        toast.show();
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Copied!",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+
+
+    public void getLocalIP(){
+        try {
+            List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+            for (NetworkInterface intf : interfaces) {
+                List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
+                for (InetAddress addr : addrs) {
+                    if (!addr.isLoopbackAddress()) {
+                        locIP = addr.getHostAddress();
+                        locOut.setText("Local ip is: " + locIP);
+                    }
+                }
+            }
+        } catch (Exception e) {e.printStackTrace();} // for now eat exceptions
     }
-
 }
+
+
