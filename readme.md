@@ -7,3 +7,4 @@ Screenshots
 ------------------------
 
 ![screenshot](images/scr.png)
+![screenshot2](images/scr1.png)
