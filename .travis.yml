@@ -23,8 +23,7 @@ sudo: required
 
 before_install:
  - chmod +x gradlew
- - echo no | Android/Sdk/tools/bin/avdmanager create avd --force --name testAVD --abi google_apis/x86_64 --package 'system-images;android-23;google_apis;x86_64'
- - yes | sdkmanager "platforms;android-28" 
- - emulator -avd test -no-audio -no-window &
- - android-wait-for-emulator
- - adb shell input keyevent 82 &
+- echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 100M
+- emulator -avd test -no-audio -no-window &
+- android-wait-for-emulator
+- adb shell input keyevent 82 &
