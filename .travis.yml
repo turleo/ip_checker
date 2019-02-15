@@ -26,6 +26,13 @@ android:
   licenses:
     - android-sdk-license-.+
  
+ 
+env:
+    matrix:
+        - ANDROID_TARGET=android-21 ANDROID_ABI=armeabi-v7a
+    global:
+        - ADB_INSTALL_TIMEOUT=10
+ 
 sudo: required
 
 before_install:
