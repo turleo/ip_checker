@@ -11,6 +11,9 @@ android:
     # Support library
     - extra-android-support
     - extra-android-m2repository
+    - sys-img-x86-android-25
+    - sys-img-armeabi-v7a-android-17
+
 
 
 jdk:
@@ -20,4 +23,8 @@ sudo: required
 
 before_install:
  - chmod +x gradlew
- - yes | sdkmanager "platforms;android-28"
+ - yes | sdkmanager "platforms;android-28" 
+ - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 100M
+ - emulator -avd test -no-audio -no-window &
+ - android-wait-for-emulator
+ - adb shell input keyevent 82 &
