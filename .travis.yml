@@ -26,3 +26,8 @@ android:
   licenses:
     - android-sdk-license-.+
  
+sudo: required
+
+before_install:
+ - chmod +x gradlew
+ 
