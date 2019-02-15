@@ -14,8 +14,6 @@ android:
     - sys-img-x86-android-25
     - sys-img-armeabi-v7a-android-17
 
-
-
 jdk:
   - oraclejdk8
 
