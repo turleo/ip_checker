@@ -154,10 +154,22 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 final String TAG = "NoAnyIP";
                 Log.wtf(TAG, e.toString());
+                String err = null;
+                try {
+        int timeoutMs = 1500;
+        Socket sock = new Socket();
+        SocketAddress sockaddr = new InetSocketAddress("8.8.8.8", 53);
+
+        sock.connect(sockaddr, timeoutMs);
+        sock.close();
+
+        err = e.toString();
+    } catch (IOException e) { err = "No internet connection" }
+}
                 //waitforip.dismiss();
-                waitforip.make(view, e.toString(), Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-            }
+                waitforip.make(view, err, Snackbar.LENGTH_SHORT)
+                        .setAction("Retry", null).show();
+            
             return null;
         }
 
