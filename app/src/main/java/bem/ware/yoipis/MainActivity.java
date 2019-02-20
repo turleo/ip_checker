@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         sock.close();
 
         err = e.toString();
-    } catch (IOException e) { err = "No internet connection" }
+    } catch (IOException e) { err = "No internet connection"; }
 }
                 //waitforip.dismiss();
                 waitforip.make(view, err, Snackbar.LENGTH_SHORT)
