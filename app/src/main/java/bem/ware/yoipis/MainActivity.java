@@ -24,9 +24,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
+import java.net.Socket;
+import java.net.SocketAddress;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
@@ -139,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         /** check and output your ip */
         @Override
         protected Void doInBackground(Void... params) {
+            String err = "Success";
             try {
                 URL yahoo = new URL("https://api.ipify.org");
                 URLConnection yc = yahoo.openConnection();
@@ -154,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 final String TAG = "NoAnyIP";
                 Log.wtf(TAG, e.toString());
-                String err = null;
                 try {
         int timeoutMs = 1500;
         Socket sock = new Socket();
@@ -164,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         sock.close();
 
         err = e.toString();
-    } catch (IOException e) { err = "No internet connection"; }
+    } catch (IOException ee) { err = getResources().getString(R.string.noinetcon); }
 }
                 //waitforip.dismiss();
                 waitforip.make(view, err, Snackbar.LENGTH_SHORT)
