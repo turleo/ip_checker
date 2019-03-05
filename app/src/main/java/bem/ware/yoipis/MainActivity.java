@@ -115,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent about_ = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(about_);
                 return true;
+            case R.id.action_kill:
+                crash();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -217,6 +219,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } catch (Exception e) {e.printStackTrace();} // for now eat exceptions
+    }
+
+    public void crash(){
+        int a = 5/0;
     }
 }
 
