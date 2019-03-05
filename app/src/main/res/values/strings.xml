@@ -8,4 +8,6 @@
     <string name="city_name">City:</string>
     <string name="org">Provider:</string>
     <string name="go">Search:</string>
+    <string name="title_insantapp">IP checker</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

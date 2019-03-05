@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
     package="bem.ware.yoipis">
+
+    <dist:module dist:instant="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -27,9 +30,10 @@
         <activity
             android:name=".AboutActivity"
             android:theme="@style/Theme.MaterialComponents.Light.Dialog" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
-            tools:node="remove"/>
+            tools:node="remove" />
     </application>
 
 </manifest>
