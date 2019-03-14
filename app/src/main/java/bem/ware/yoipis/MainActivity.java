@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             String err = "Success";
             try {
-                URL yahoo = new URL("https://api.ipify.org");
+                URL yahoo = new URL("https://us-central1-ip-checker-7ecce.cloudfunctions.net/getip");
                 URLConnection yc = yahoo.openConnection();
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(
