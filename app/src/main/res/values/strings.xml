@@ -10,4 +10,6 @@
     <string name="go">Search:</string>
     <string name="title_insantapp">IP checker</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="local_ip_must_be_here">Local IP must be here</string>
+    <string name="ip_is_comming">IP is comming...</string>
 </resources>

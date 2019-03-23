@@ -8,11 +8,14 @@ package bem.ware.yoipis;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -35,6 +38,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
         TextView outs;
@@ -186,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
             outs.setText(ipis);
 
             vvait.setVisibility(ProgressBar.INVISIBLE);
+
+            pleaseRUOGP();
         }
 
         /*@RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -203,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
                     "Copied!",
                     Toast.LENGTH_SHORT);
             toast.show();
+
+            pleaseRUOGP();
         }
 
 
@@ -224,6 +232,33 @@ public class MainActivity extends AppCompatActivity {
 
     public void crash(){
         int a = 5/0;
+    }
+
+    //RUOGP = Rate us on google play
+    public void pleaseRUOGP(){
+        final String APP_PREFERENCES = "prefs";
+        final String APP_PREFERENCES_RUOGP = "isRate";
+        SharedPreferences mSettings;
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        int ir = 0;
+
+        if(mSettings.contains(APP_PREFERENCES_RUOGP)) {
+            ir = mSettings.getInt(APP_PREFERENCES_RUOGP, 0);
+        }
+
+        if (ir != 2) {
+            Random random = new Random();
+            int istry = random.nextInt(2);
+            String istryy = String.valueOf(istry);
+            Log.i("rand", istryy);
+            if(istry>=1){
+                Log.i("rand", "going to show");
+               FragmentManager manager = getSupportFragmentManager();
+                RateUs rus = new RateUs();
+               rus.show(manager, "dialog");
+            }
+        }
+        //}
     }
 }
 
