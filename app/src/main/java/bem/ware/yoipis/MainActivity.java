@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             String err = "Success";
             try {
-                URL yahoo = new URL("https://us-central1-ip-checker-7ecce.cloudfunctions.net/getip");
+                URL yahoo = new URL("https://us-central1-ip-checker-7ecce.cloudfunctions.net/getIP");
                 URLConnection yc = yahoo.openConnection();
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(
