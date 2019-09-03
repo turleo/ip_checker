@@ -5,8 +5,6 @@
 
 [![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=bem.ware.yoipis&utm_source=gh&utm_campaign=readme&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1)
 
-My IP checker checking your IP in [ipyfy web service](https://www.ipify.org/).
-
 Screenshots
 ------------------------
 
