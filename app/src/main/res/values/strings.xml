@@ -1,15 +1,4 @@
 <resources>
     <string name="app_name">IP checker</string>
-    <string name="action_settings">About</string>
-    <string name="noinetcon">No internet connection</string>
-    <string name="ip_here">Input IP here</string>
-    <string name="ip">IP:</string>
-    <string name="coco">Country code:</string>
-    <string name="city_name">City:</string>
-    <string name="org">Provider:</string>
-    <string name="go">Search:</string>
-    <string name="title_insantapp">IP checker</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="local_ip_must_be_here">Local IP must be here</string>
-    <string name="ip_is_comming">IP is comming...</string>
+    <string name="action_settings">Settings</string>
 </resources>
