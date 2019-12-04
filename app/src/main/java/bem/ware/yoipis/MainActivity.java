@@ -22,7 +22,6 @@ import java.lang.Void;
 public class MainActivity extends AppCompatActivity {
         TextView outs;
         View view;
-        Snackbar waitforip;
         getIP getip;
 
 
@@ -37,27 +36,23 @@ public class MainActivity extends AppCompatActivity {
         view = findViewById(R.id.fab);
         getip = new getIP();
 
-        /**ip will gets in start */
+        /* ip will gets in start */
         getip.execute();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /**also when you click fab it will say you what it goes for ip and check ip */
-                waitforip.make(view, "Going for ip", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-
-                /** you can use every AnyncTask only once, but this code
-                 * can help you use AnyncTask again */
+                /* you can use every AnyncTask only once, but this code
+                 can help you use AnyncTask again */
                 getip = new getIP();
 
-                final String TAG = "checking..";
-                Log.wtf(TAG, "Checking for IP...");
-
                 getip.execute();
-                /**if you don't understand it will will ask ip on line
-                72 via AsyncTask */
+                /**
+                 * if you don't understand
+                 * it will will ask ip on line
+                 *  67 via AsyncTask
+                 */
             }
         });
     }
@@ -86,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                URL yahoo = new URL("https://api.ipify.org");
-                URLConnection yc = yahoo.openConnection();
+                URL ip_address = new URL("https://us-central1-ip-checker-7ecce.cloudfunctions.net/getIP");
+                URLConnection yc = ip_address.openConnection();
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(
                                 yc.getInputStream()));
@@ -96,29 +91,21 @@ public class MainActivity extends AppCompatActivity {
                 while ((inputLine = in.readLine()) != null)
                     ipis = inputLine;
                 in.close();
-                //waitforip.dismiss();
             } catch (Exception e) {
                 final String TAG = "NoAnyIP";
                 Log.wtf(TAG, e.toString());
-                //waitforip.dismiss();
-                waitforip.make(view, e.toString(), Snackbar.LENGTH_SHORT)
+                Snackbar.make(view, e.toString(), Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
             }
             return null;
         }
 
-        /** delites statusbar */
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             outs.setText(ipis);
 
             vvait.setVisibility(ProgressBar.INVISIBLE);
         }
-
-        /*@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        public String getIP() {
-            return ipis;
-        }*/
     }
 
 }
