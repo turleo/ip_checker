@@ -1,5 +1,7 @@
 package bem.ware.yoipis;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -106,6 +108,16 @@ public class MainActivity extends AppCompatActivity {
 
             vvait.setVisibility(ProgressBar.INVISIBLE);
         }
+    }
+
+    public void copy(View v){
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("label", outs.getText().toString());
+        clipboard.setPrimaryClip(clip);
+
+        Snackbar.make(view, "Copied", Snackbar.LENGTH_SHORT)
+                .setAction("Action", null).show();
+
     }
 
 }
