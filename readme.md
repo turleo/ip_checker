@@ -1,7 +1,5 @@
-# [IP checker](app/release/app-release.apk)
+# [IP checker](https://play.google.com/store/apps/details?id=bem.ware.yoipis)
 ![icon](images/ico.png)
-
-My IP checker checking your IP in [ipyfy web servise](https://www.ipify.org/).
 
 Screenshots
 ------------------------
