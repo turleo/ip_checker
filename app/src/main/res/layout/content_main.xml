@@ -20,7 +20,7 @@
         android:onClick="copy"
         android:text="@string/loading_text"
         android:textAppearance="@android:style/TextAppearance.Widget.PopupMenu.Small"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/text"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
