@@ -6,8 +6,8 @@
     <string name="by_turleo">by turleo</string>
     <string name="using">Project is using:</string>
     <string name="Logo">Logo</string>
-    <string name="dependences">- Firebase</string>
+    <string name="dependences" translatable="false">- Firebase</string>
     <string name="rate_us_5_stars">Rate this app 5 stars</string>
-    <string name="github">GitHub</string>
+    <string name="github" translatable="false">GitHub</string>
     <string name="author_github">Author\'s GitHub</string>
 </resources>
