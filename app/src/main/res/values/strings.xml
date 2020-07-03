@@ -2,4 +2,12 @@
     <string name="app_name">IP checker</string>
     <string name="action_settings">Settings</string>
     <string name="loading_text">IP is coming…</string>
+    <string name="about">About</string>
+    <string name="by_turleo">by turleo</string>
+    <string name="using">Project is using:</string>
+    <string name="Logo">Logo</string>
+    <string name="dependences">- Firebase</string>
+    <string name="rate_us_5_stars">Rate this app 5 stars</string>
+    <string name="github">GitHub</string>
+    <string name="author_github">Author\'s GitHub</string>
 </resources>

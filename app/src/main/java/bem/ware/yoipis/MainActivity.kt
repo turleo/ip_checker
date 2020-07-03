@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -82,8 +84,6 @@ class MainActivity : AppCompatActivity() {
                 while (`in`.readLine().also { inputLine = it } != null) ipis = inputLine
                 `in`.close()
             } catch (e: Exception) {
-                val TAG = "NoAnyIP"
-                Log.wtf(TAG, e.toString())
                 Snackbar.make(view!!, e.toString(), Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show()
             }
@@ -97,5 +97,22 @@ class MainActivity : AppCompatActivity() {
         clipboard.setPrimaryClip(clip)
         Snackbar.make(view!!, "Copied", Snackbar.LENGTH_SHORT)
                 .setAction("Action", null).show()
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.about -> {
+                startActivity(Intent(this, AboutActivity::class.java))
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
