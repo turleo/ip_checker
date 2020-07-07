@@ -6,7 +6,7 @@ const util = require('util');
 //
 exports.getIP = functions.https.onRequest((request, response) => {
     const ipAddress = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
-    console.log(request);
     const message = util.format("%s", ipAddress);
+    response.set('Access-Control-Allow-Origin', '*');
     response.send(message);
 });
